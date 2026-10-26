@@ -41,15 +41,6 @@ jobs:
             echo "::warning::No dependency update report.txt found."
           fi
 
-      - name: Upload Dependency Report Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dependency-updates-report
-          path: |
-            build/dependencyUpdates/
-            build/reports/dependencyUpdates/
-          if-no-files-found: ignore
-
       - name: Send Report to Telegram
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
